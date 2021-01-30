@@ -2,8 +2,11 @@ import 'dart:async';
 
 import 'package:socket_io/socket_io.dart';
 
+import 'database.dart';
+
 void main() {
   final server = Server();
+  final database = Database();
 
   // el servidor escucha si hay clientes conectados
   server.on('connection', (client) {
@@ -17,6 +20,8 @@ void main() {
       client.emit('msg', 'me enviaste este mensaje: $data');
     });
   });
+
+  database.dbconection;
 
   server.listen(3005);
 }
